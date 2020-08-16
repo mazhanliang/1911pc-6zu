@@ -13,7 +13,7 @@ module.exports = {
         // 请求带api的全部按照一下规则处理
         '/api':{
           // 转发到该域名
-          target: 'http://1911pc.mazhanliang.top',
+          target: 'http://19pc.mazhanliang.top',
           // 开启代理
           changeOrigin: true,
           pathRewrite: {
