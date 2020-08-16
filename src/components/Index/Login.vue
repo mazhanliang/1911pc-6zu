@@ -87,7 +87,7 @@ export default {
         if (this.note_code==''){
           alert('短信验证码不能为空');
           return false;
-        }
+        },
       }
   },
 
