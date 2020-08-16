@@ -9,12 +9,14 @@
         </a>
       </h1>
       <p class="nav">
-        <a href="index.html" class="active">最新</a>
-        <a href="list.html">娱乐</a>
-        <a href="list.html">生活</a>
-        <a href="list.html">财经</a>
-        <a href="list.html">科技</a>
-        <a href="list.html">军事</a>
+        <router-link :to="{name:'Index'}" class="active">最新</router-link>
+
+        <router-link :to="{name:'List'}">娱乐</router-link>
+        <router-link :to="{name:'List'}">生活</router-link>
+        <router-link :to="{name:'List'}">财经</router-link>
+        <router-link :to="{name:'List'}">科技</router-link>
+        <router-link :to="{name:'List'}">军事</router-link>
+
       </p>
       <div class="search-bar">
         <form class="layui-form" action="">
@@ -27,9 +29,8 @@
         </form>
       </div>
       <div class="login">
-         <a href="login.html">
-          登录
-        </a>
+        <router-link :to="{name:'Login'}">登录</router-link>
+
        <!-- <a href="login.html"> -->
         <!-- <img src="@/assets/res/static/images/header.png" style="width: 36px; height: 36px;"> -->
        <!-- </a> -->
@@ -68,7 +69,14 @@ export default {
 
   },
   mounred(){
-
+    layui.config({
+      base: '@/assets/res/static/js/'
+    }).use('index',function(){
+      var index = layui.index;
+      index.banner()
+      index.seachBtn()
+      index.arrowutil()
+    });
   }
 }
 </script>
