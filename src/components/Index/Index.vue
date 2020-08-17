@@ -322,8 +322,6 @@
 <script>
   import "@/assets/res/layui/css/layui.css"
   import "@/assets/res/static/css/main.css"
-  import "@/assets/res/layui/layui.js"
-
 
   import MyHeader from '@/components/Index/Head'
   import MyFooter  from '@/components/Index/Tail'
@@ -341,15 +339,14 @@ export default {
   methods:{
 
   },
-  mounred(){
-    layui.config({
-      base: '@/assets/res/static/js/'
-    }).use('index',function(){
+  mounted(){
+    layui.use('index',function(){
       var index = layui.index;
       index.banner()
       index.seachBtn()
       index.arrowutil()
     });
+    layui.layer.alert(11111);
   }
 }
 </script>

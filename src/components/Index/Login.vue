@@ -74,23 +74,40 @@ export default {
   components:{
     MyHeader:MyHeader,
   },
-  methods:{
-    Login:function () {
-          if (this.user_tel==''){
-            alert('手机号称不能为空');
-            return false;
-          }
-        if (this.user_code==''){
-          alert('验证码不能为空');
-          return false;
-        }
-        if (this.note_code==''){
-          alert('短信验证码不能为空');
-          return false;
-        },
+  methods: {
+    Login: function () {
+      if (this.user_tel == '') {
+        alert('手机号称不能为空');
+        return false;
       }
-  },
+      if (this.user_code == '') {
+        alert('验证码不能为空');
+        return false;
+      }
+      if (this.note_code == '') {
+        alert('短信验证码不能为空');
+        return false;
+      }
+      this.$http.post('/api/login', {
+        user_tel: this.user_tel,
+        user_code: this.user_code,
+        note_code: thia.note_code,
 
+      }).then(respnose => {
+        if (respnose.body.status == 200) {
+          sessionStorage.setItem('id', respnose.body.data.id);
+          sessionStorage.setItem('token', respnose.body.data.token);
+          this.$router.push({name: 'Index'});
+        } else {
+          alert(respnose.data.msg)
+        }
+        console.log('success');
+        console.log(respnose);
+      }, error => {
+        console.log(error);
+      })
+    },
+  }
 }
 </script>
 
