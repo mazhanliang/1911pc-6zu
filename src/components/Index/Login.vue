@@ -45,8 +45,9 @@
 </template>
 
 <script>
-  import MyHeader from '@/components/Index/Head'
+import MyHeader from '@/components/Index/Head'
 
+import Common from '@/mixin/common.js'
 export default {
   name: 'Login',
   data () {
@@ -55,6 +56,7 @@ export default {
       password:''
     }
   },
+mixins:[Common],
   components:{
     MyHeader:MyHeader,
   },
@@ -64,14 +66,15 @@ export default {
         alert('手机号不能为空');
         return false;
       }
-      if (this.password == '') {
-        alert('密码不能为空');
+      if(this.checkPhone(this.phone)){
+        alert('手机号格式不正确');
         return false;
       }
       if(this.password==''||this.password.length<6){
         alert('密码长度最少6位');
         return false;
       }
+
       let api_data={
         phone:this.phone,
         password:this.password,

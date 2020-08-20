@@ -325,6 +325,8 @@
 
   import MyHeader from '@/components/Index/Head'
   import MyFooter  from '@/components/Index/Tail'
+
+  import Common from '@/mixin/common.js'
 export default {
   name: 'Index',
   data () {
@@ -332,6 +334,7 @@ export default {
 
     }
   },
+  mixins:[Common],
   components:{
     MyHeader:MyHeader,
     MyFooter:MyFooter
@@ -346,15 +349,11 @@ export default {
       index.seachBtn()
       index.arrowutil()
     });
-    layui.layer.alert(11111);
+    layui.layer.alert('页面加载完成');
   }
 }
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
-h1, h2 {
-  font-weight: normal;
-}
-
 </style>

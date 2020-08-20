@@ -55,9 +55,7 @@
 </template>
 
 <script>
-  import "@/assets/res/layui/css/layui.css"
-  import "@/assets/res/static/css/main.css"
-  import "@/assets/res/layui/layui.js"
+ 
 export default {
   name: 'HelloWorld',
   data () {
@@ -69,14 +67,6 @@ export default {
 
   },
   mounred(){
-    layui.config({
-      base: '@/assets/res/static/js/'
-    }).use('index',function(){
-      var index = layui.index;
-      index.banner()
-      index.seachBtn()
-      index.arrowutil()
-    });
   }
 }
 </script>
