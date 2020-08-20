@@ -62,37 +62,39 @@ mixins:[Common],
   },
   methods: {
     Login: function () {
+       
       if (this.phone == '') {
-        alert('手机号不能为空');
+        this.alert('手机号不能为空');
         return false;
       }
-      if(this.checkPhone(this.phone)){
-        alert('手机号格式不正确');
+      if (this.checkPhone(this.phone)) {
+        this.msg('手机号格式不正确');
         return false;
       }
-      if(this.password==''||this.password.length<6){
-        alert('密码长度最少6位');
+      if (this.password == '' || this.password.length < 6) {
+        this.msg('密码长度最少6位');
         return false;
       }
 
-      let api_data={
-        phone:this.phone,
-        password:this.password,
-        tt:1
+      let api_data = {
+        phone: this.phone,
+        password: this.password,
+        tt: 1
       }
       this.$http.post('/api/login', api_data).then(respnose => {
         if (respnose.body.status == 200) {
-          alert('登录成功');
+          this.alert('登录成功');
           return false;
-
         } else {
-          alert(respnose.data.msg)
+          this.msg(respnose.data.msg)
         }
-
       }, error => {
         console.log(error);
       })
-    },
+    }
+  },
+  mounted(){
+
   }
 }
 </script>
