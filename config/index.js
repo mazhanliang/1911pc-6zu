@@ -7,38 +7,51 @@ const path = require('path')
 module.exports = {
   dev: {
 
-    // Paths
-    assetsSubDirectory: 'static',
-    assetsPublicPath: '/',
-    proxyTable: {},
+      // Paths
+      assetsSubDirectory: 'static',
+      assetsPublicPath: '/',
 
-    // Various Dev Server settings
-    host: '0.0.0.0', // can be overwritten by process.env.HOST
-    port: 8080, // can be overwritten by process.env.PORT, if port is in use, a free one will be determined
-    autoOpenBrowser: false,
-    errorOverlay: true,
-    notifyOnErrors: true,
-    poll: false, // https://webpack.js.org/configuration/dev-server/#devserver-watchoptions-
+      proxyTable: {
+      '/api':{
+        // 转发到该域名
+        target: 'http://1911-api.jiwenjie.top',
+        // 开启代理
+        changeOrigin: true,
+        pathRewrite: {
+          '^/api' : ''
+        }
+      }
+    },
 
-    
-    /**
-     * Source Maps
-     */
+      // Various Dev Server settings
+      host: '0.0.0.0', // can be overwritten by process.env.HOST
 
-    // https://webpack.js.org/configuration/devtool/#development
-    devtool: 'cheap-module-eval-source-map',
+  port: 8080, // can be overwritten by process.env.PORT, if port is in use, a free one will be determined
 
-    // If you have problems debugging vue-files in devtools,
-    // set this to false - it *may* help
-    // https://vue-loader.vuejs.org/en/options.html#cachebusting
-    cacheBusting: true,
+  autoOpenBrowser: false,
+  errorOverlay: true,
+  notifyOnErrors: true,
+  poll: false, // https://webpack.js.org/configuration/dev-server/#devserver-watchoptions-
 
-    cssSourceMap: true
-  },
 
-  build: {
-    // Template for index.html
-    index: path.resolve(__dirname, '../dist/index.html'),
+  /**
+   * Source Maps
+   */
+
+  // https://webpack.js.org/configuration/devtool/#development
+  devtool: 'cheap-module-eval-source-map',
+
+  // If you have problems debugging vue-files in devtools,
+  // set this to false - it *may* help
+  // https://vue-loader.vuejs.org/en/options.html#cachebusting
+  cacheBusting: true,
+
+  cssSourceMap: true
+},
+
+build: {
+  // Template for index.html
+  index: path.resolve(__dirname, '../dist/index.html'),
 
     // Paths
     assetsRoot: path.resolve(__dirname, '../dist'),
@@ -65,5 +78,5 @@ module.exports = {
     // `npm run build --report`
     // Set to `true` or `false` to always turn it on or off
     bundleAnalyzerReport: process.env.npm_config_report
-  }
+}
 }
