@@ -10,7 +10,7 @@
           <form class="layui-form"> <!-- 提示：如果你不想用form，你可以换成div等任何一个普通元素 -->
             <div class="layui-form-item">
               <div class="layui-input-block">
-                <input type="text" v-model="phone" lay-verify="required|phone" id="phone" placeholder="请输入手机号" autocomplete="off" class="layui-input">
+                <input type="text" v-model="phone" id="phone" placeholder="请输入手机号" autocomplete="off" class="layui-input">
               </div>
             </div>
 
@@ -62,7 +62,7 @@ mixins:[Common],
   },
   methods: {
     Login: function () {
-       
+
       if (this.phone == '') {
         this.alert('手机号不能为空');
         return false;
@@ -83,8 +83,8 @@ mixins:[Common],
       }
       this.$http.post('/api/login', api_data).then(respnose => {
         if (respnose.body.status == 200) {
-          this.alert('登录成功');
-          return false;
+
+          this.$router.push({name:'Index'});
         } else {
           this.msg(respnose.data.msg)
         }
