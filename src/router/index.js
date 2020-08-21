@@ -8,6 +8,7 @@ import Login from "@/components/Index/Login";
 import PersInfo from "@/components/Index/PersInfo";
 import Search from "@/components/Index/Search";
 
+
 Vue.use(Router)
 
 export default new Router({
@@ -42,5 +43,6 @@ export default new Router({
       name: 'Search',
       component: Search
     },
+
   ]
 })
