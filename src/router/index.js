@@ -9,6 +9,7 @@ import PersInfo from "@/components/Index/PersInfo"
 import Search from "@/components/Index/Search"
 import Reg from "@/components/Index/Reg";
 
+
 // 引入http请求相关类库
 import VueResource from 'vue-resource'
 
@@ -16,6 +17,8 @@ import VueResource from 'vue-resource'
 Vue.config.productionTip = false
 //使用http请求相关类库
 Vue.use(VueResource)
+
+
 Vue.use(Router)
 
 // 确保post请求不会被转换为 options 请求
@@ -58,5 +61,6 @@ export default new Router({
       name: 'Reg',
       component: Reg
     }
+    
   ]
 })
