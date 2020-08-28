@@ -82,14 +82,14 @@
 <script>
   import "@/assets/res/layui/css/layui.css"
   import "@/assets/res/static/css/main.css"
-  import Common from '@/mixins/common.js'
+  import Common from '@/mixin/common.js'
 
   export default {
     name: "Reg",
     data () {
       return {
           img_code: '',
-          phone:'18231385818',
+          phone:'',
           user_img_code:'',
           TimeCode:'验证码',
           msg_code:'',
@@ -101,9 +101,7 @@
         // msg_send_mark:0
            }
          },
-         mixins:{
-           Common
-         },
+    mixins:[Common],
          methods:{
            gotoLogin:function(){
              this.$router.push({name:'Login'});
@@ -126,15 +124,15 @@
                  },
                  getMsgCode:function() {
                     if( this.phone == '') {
-                      alert('请输入你的手机号');
+                      this.alert('请输入你的手机号');
                      return false;
                    }
-                 // if( !this.checkPhone( this.phone)){
-                 //   alert('手机号格式不正确');
-                 //   return false;
-                 // }
+                   if (this.checkPhone(this.phone)) {
+                     this.alert('手机号格式不正确');
+                     return false;
+                   }
                   if( this.user_img_code == ''){
-                    alert('请输入图片验证码');
+                    this.alert('请输入图片验证码');
                     return false;
                   }
                  let api_req = {
@@ -148,14 +146,14 @@
                   //调用短信发送接口
                   this.$http.post('/api/sendMsgCode',api_req).then(success=> {
                     if( success.body.status != 200) {
-                       alert( success.body.msg );
+                      this.alert( success.body.msg );
                      }else{
                        this.changeImgCode();
                        this.countDown();
                     //   this.msg_send_mark = 1;
                    }
                 },error=>{
-                    alert('短信发送失败，请重试');
+                    this.msg('短信发送失败，请重试');
                     return false;
                   });
               },
@@ -168,7 +166,7 @@
                      // });
                      // return false;
                    if( this.phone == '') {
-                        alert('请输入你的手机号');
+                     this.alert('请输入你的手机号');
                         return false;
                      }
                   // if( this.checkPhone( this.phone)){
@@ -180,19 +178,19 @@
                   //   return false;
                   // }
                   if( this.msg_code == ''){
-                    alert('短信验证码不能为空');
+                    this.alert('短信验证码不能为空');
                     return false;
                   }
                   if( this.psd == ''){
-                    alert('密码不能为空');
+                    this.alert('密码不能为空');
                     return false;
                   }
                   if( this.psd.length < 6){
-                    alert('密码不能少于6位');
+                    this.alert('密码不能少于6位');
                     return false;
                   }
                   if( this.psd != this.repsd){
-                    alert('俩次密码不一致');
+                    this.alert('俩次密码不一致');
                     return false;
                   }
                   let api_req = {
@@ -203,14 +201,14 @@
                   }
                   this.$http.post('/api/reg',api_req).then(success=> {
                     if (success.body.status == 200) {
-                      alert('注册成功,去登陆');
+                      this.alert('注册成功,去登陆');
                       this.$router.push({name:'Login'})
                   }else{
                       alert( success.body.msg);
                       return false;
                     }
                   },error=>{
-                    alert('注册失败,请重试');
+                    this.alert('注册失败,请重试');
                     return false;
                   })
                 }
@@ -221,15 +219,8 @@
                   this.img_code = success.body.data.url;
                   this.sid = success.body.data.sid;
                 },error=>{
-                  alert('请求失败，请重试');
+                  this.alert('请求失败，请重试');
                 })
-
-               layui.use('index', function () {
-                 var index = layui.index;
-                 index.banner()
-                 index.seachBtn()
-                 index.arrowutil()
-               });
              }
            }
 </script>

@@ -16,13 +16,25 @@
 
             <div class="layui-form-item">
               <div class="layui-input-block">
-                <input type="password" v-model="password" lay-verify="required|phone" id="password" placeholder="请输入密码"   autocomplete="off" class="layui-input">
+                <input type="password" v-model="password"  id="password" placeholder="请输入密码"   autocomplete="off" class="layui-input">
               </div>
             </div>
 
+            <div class="layui-form-item agreement">
+              <div class="layui-input-block">
+                <input type="checkbox" name="like1[write]" lay-filter="required" v-model="agree"
+                       lay-skin="primary" title="我已阅读并同意" checked="" >
+                <span class="txt"><a href="#">用户协议</a>和<a  href="#">隐私条款</a></span>
+              </div>
+            </div>
             <div class="layui-form-item">
               <div class="layui-input-block">
-                <button class="layui-btn" @click="Login" lay-submit lay-filter="*" onclick="return false">登录</button>
+                <button class="layui-btn" @click="Login" lay-submit lay-filter="*" onclick="return">登录</button>
+              </div>
+            </div>
+            <div class="layui-form-item">
+              <div class="layui-input-block">
+                <button class="layui-btn" type="button" @click="reg" lay-filter="*"  style="background-color:rgb(187 184 184)">去注册</button>
               </div>
             </div>
             <!-- 更多表单结构排版请移步文档左侧【页面元素-表单】一项阅览 -->
@@ -61,6 +73,9 @@ mixins:[Common],
     MyHeader:MyHeader,
   },
   methods: {
+    reg:function(){
+      this.$router.push({name:'Reg'});
+    },
     Login: function () {
 
       if (this.phone == '') {

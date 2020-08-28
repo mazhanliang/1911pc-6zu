@@ -14,7 +14,7 @@ module.exports = {
       proxyTable: {
       '/api':{
         // 转发到该域名
-        target: 'http://1911-api.jiwenjie.top',
+        target: 'http://1911api6zu.mazhanliang.top',
         // 开启代理
         changeOrigin: true,
         pathRewrite: {
@@ -35,7 +35,7 @@ module.exports = {
     /**
      * Source Maps
      */
-    
+
   /**
    * Source Maps
    */

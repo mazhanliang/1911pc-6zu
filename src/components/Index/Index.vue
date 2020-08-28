@@ -7,12 +7,8 @@
     <div class="layui-carousel imgbox" id="micronews-carouse">
       <div carousel-item>
         <div>
-          <div v-for="(v,k) in news_list">
           <p class="title">去南非旅行需要做什么准备</p>
-            <router-link :to="{name:'Details',query:{news_id:v.news_id}}">
-              <img :src="v.news_image" style="width: 1000px"
-          height="450"></router-link>
-          </div>
+          <a href="list.html"><img src="@/assets/res/static/images/news_img1.jpg"></a>
         </div>
         <div>
           <p class="title">去南非旅行需要做什么准备</p>
@@ -62,7 +58,9 @@
                   <div v-for="(vv,kk) in news_remai">
                   <li class="list">
                     <router-link :to="{name:'Details',query:{news_id:vv.news_id}}">
-                      <span>{{vv.news_title}}</span><i class="heat-icon"></i>
+                      <span>{{vv.news_title}}</span>
+
+                      <i class="heat-icon"></i>
                     </router-link>
                   </li>
                   </div>
@@ -106,7 +104,6 @@ export default {
     news_list:function () {
       this.$http.post('api/newslist').then( (response) =>{
         if( response.body.status == 200 ){
-
           this.news_list =this.news_list.concat(response.body.data);
         }
       },(error) => {
@@ -123,9 +120,8 @@ export default {
         alert(error);
       })
     }
-
   },
-  
+
   mounted(){
     layui.use('index',function(){
       var index = layui.index;
