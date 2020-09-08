@@ -60,7 +60,7 @@
                     <router-link :to="{name:'Details',query:{news_id:vv.news_id}}">
                       <span>{{vv.news_title}}</span>
 
-                      <i class="heat-icon"></i>
+                      <template v-if="vv.aaa<=3"><i   class="heat-icon"></i></template>
                     </router-link>
                   </li>
                   </div>

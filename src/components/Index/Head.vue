@@ -30,24 +30,12 @@
       </div>
       <div class="login">
         <router-link :to="{name:'Login'}">登录</router-link>
-
+        <router-link :to="{name:'PersInfo'}">收藏</router-link>
        <!-- <a href="login.html"> -->
         <!-- <img src="@/assets/res/static/images/header.png" style="width: 36px; height: 36px;"> -->
        <!-- </a> -->
       </div>
-      <div class="menu-icon">
-        <i class="layui-icon layui-icon-more-vertical"></i>
-      </div>
-      <div class="mobile-nav">
-        <ul class="layui-nav" lay-filter="">
-          <li class="layui-nav-item layui-this"><a href="index.html">最新</a></li>
-          <li class="layui-nav-item"><a href="list.html">娱乐</a></li>
-          <li class="layui-nav-item"><a href="list.html">生活</a></li>
-          <li class="layui-nav-item"><a href="list.html">财经</a></li>
-          <li class="layui-nav-item"><a href="list.html">科技</a></li>
-          <li class="layui-nav-item"><a href="list.html">军事</a></li>
-        </ul>
-      </div>
+
     </div>
   </div>
 
